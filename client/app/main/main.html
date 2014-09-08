@@ -1,0 +1,74 @@
+<div ng-include="'components/navbar/navbar.html'"></div>
+
+<header class="hero-unit" id="banner">
+  <div class="container">
+    <h1>'Allo, 'Allo!</h1>
+    <p class="lead">Kick-start your next web app with Angular Fullstack</p>
+    <img src="assets/images/yeoman.png" alt="I'm Yeoman">
+  </div>
+</header>
+
+<div class="container">
+ <h1>Whois Search</h1>
+  <div ng-controller="MainCtrl">
+    <form ng-submit="doSearch()" name="myForm">
+      <input type="text" ng-model="query" required>
+      <input type="submit" value="search" ng-disabled="myForm.$invalid">
+    </form>
+    <h2>Results</h2>
+    <ul ng-show="ips.length" style="list-style:none;padding:0;">
+
+      <label class="checkbox" ng-repeat="column in columns">
+        <input type="checkbox" ng-model="column.visible" /> {{column.title}}
+      </label>
+
+      <table class="table table-bordered table-stripped table-responsive table-hover">
+        <thead>
+          <tr class="info">
+	    <th ng-repeat="column in columns" ng-show="column.visible">
+	      {{column.title}}
+	    </th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr ng-repeat="ip in ips">
+	    <td ng-repeat="column in columns" ng-show="column.visible">
+	      {{ip[column.field]}}
+	    </td>
+
+<!--
+            <td>{{ip.name}}</td>
+            <td>{{ip.rdata}}</td>
+            <td>{{ip.ipnw}}</td>
+            <td>{{ip.iporg}}</td>
+-->
+          </tr>
+        </tbody>
+      </table>
+
+<!--
+      <li ng-repeat="ip in ips">
+        {{ip.name}} {{ip.rdata}} {{ip.ipnw}} {{ip.iporg}}
+      </li>
+    </ul>
+-->
+
+    <ul style="list-style:none;padding:0;">
+      <li>
+        {{registrants[2]}} {{registrants[4]}}
+      </li>
+    </ul>
+
+    <p ng-hide="ips.length">上から検索してください。 </p>
+  </div>
+
+</div>
+
+<footer class="footer">
+  <div class="container">
+      <p>Angular Fullstack v2.0.13 |
+        <a href="https://twitter.com/tyhenkel">@tyhenkel</a> |
+         <a href="https://github.com/DaftMonk/generator-angular-fullstack/issues?state=open">Issues</a></p>
+  </div>
+</footer>
