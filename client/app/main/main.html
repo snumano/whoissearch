@@ -12,7 +12,9 @@
  <h1>Whois Search</h1>
   <div ng-controller="MainCtrl">
     <form ng-submit="doSearch()" name="myForm">
-      <input type="text" ng-model="query" required>
+<!--      <input type="text" ng-model="query" required> -->
+      <textarea ng-model="query" required>
+      </textarea>
       <input type="submit" value="search" ng-disabled="myForm.$invalid">
     </form>
     <h2>Results</h2>
